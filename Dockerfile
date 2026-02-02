@@ -2,7 +2,7 @@ FROM nginx:alpine
 
 # تنظیمات پروکسی برای هدایت ترافیک به شبکه کلودفلر
 RUN echo 'server { \
-    listen 8000; \
+    listen 443; \
     location / { \
         proxy_pass https://162.159.94.220; \
         proxy_set_header Host $http_host; \
@@ -12,6 +12,6 @@ RUN echo 'server { \
     } \
 }' > /etc/nginx/conf.d/default.conf
 
-EXPOSE 8000
+EXPOSE 443
 
 CMD ["nginx", "-g", "daemon off;"]
